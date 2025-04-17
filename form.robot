@@ -9,7 +9,7 @@ Library         SeleniumLibrary
 ${input_username}          id:username
 ${input_password}          id:password
 ${button_submitLogin}      id:submitLogin
-
+${input_email_ict_rd}      id:email_ict_rd
 
 
 *** Keywords ***
@@ -43,6 +43,29 @@ Clicar em RD Técnico
 Clicar em cadastro do RD Técnico
     Click Element      xpath=//*[@id="ui-id-3"]/li[6]/ul/li/span/span[3]/table/tbody/tr/td[1]
 
+clicar em um botão dentro do iframe
+    Wait Until Element Is Visible    id=workflowView-cardViewer
+    Select Frame    id=workflowView-cardViewer
+    Wait Until Element Is Visible    xpath=//*[@id="empresa"]
+    Click Element                    xpath=//*[@id="empresa"]
+    Click Element               xpath=//*[@id="empresa"]/option[4]
+
+
+    Wait Until Element Is Visible    xpath=//*[@id="ict_rdtecnico"]
+    Click Element                    xpath=//*[@id="ict_rdtecnico"]
+    Click Element               xpath=//*[@id="ict_rdtecnico"]/option[3]
+
+    Wait Until Element Is Visible    xpath=//*[@id="projeto_rdtecnico"]
+    Click Element                    xpath=//*[@id="projeto_rdtecnico"]
+    Click Element               xpath=//*[@id="projeto_rdtecnico"]/option[2]
+
+    Wait Until Element Is Visible    xpath=//*[@id="projeto_ano_base"]
+    Click Element                    xpath=//*[@id="projeto_ano_base"]
+    Click Element               xpath=//*[@id="projeto_ano_base"]/option[2]
+
+    Wait Until Element Is Visible    xpath=//*[@id="email_ict_rd"]
+    Click Element                    xpath=//*[@id="email_ict_rd"]
+    Input Text      ${input_email_ict_rd}    ana.gloria@victumservices.com
 
 *** Test Cases ***
 Login com sucesso
@@ -56,4 +79,4 @@ Login com sucesso
     Clicar no menu iniciar solicitações
     Clicar em RD Técnico
     Clicar em cadastro do RD Técnico
-    
+    clicar em um botão dentro do iframe
